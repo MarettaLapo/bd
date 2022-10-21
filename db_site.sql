@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 20 2022 г., 22:50
+-- Время создания: Окт 21 2022 г., 08:04
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -38,15 +38,11 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `description`) VALUES
-(1, 'рубашки Nat', 'рубашки Nat'),
-(2, 'рубашки Net', 'рубашки Net'),
-(3, 'рубашки Nut', 'рубашки Nut'),
-(4, 'штаны Nat', 'штаны Nat'),
-(5, 'рубашки Tam', 'рубашки Tam'),
-(6, 'рубашки Medicine', 'рубашки Medicine'),
-(7, 'рубашки', 'рубашки'),
-(8, 'штаны', 'штаны'),
-(9, 'штаны красные', 'штаны красные');
+(1, 'рубашки', 'категория с рубашками'),
+(2, 'штаны', 'категория со штанами'),
+(3, 'рубашки Nat', 'категория с рубашками Nat'),
+(4, 'рубашки Non', 'категория с рубашками Non'),
+(5, 'штаны Trous', 'категория со штанами Trous');
 
 -- --------------------------------------------------------
 
@@ -84,33 +80,30 @@ CREATE TABLE `product` (
   `description` varchar(500) NOT NULL,
   `price_now` decimal(10,2) DEFAULT NULL,
   `price_full` decimal(10,2) DEFAULT NULL,
-  `price_promocode` decimal(10,2) DEFAULT NULL
+  `price_promocode` decimal(10,2) DEFAULT NULL,
+  `is_avaible` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `price_promocode`) VALUES
-(1, 'рубашка Medicine', 'хорошая рубашка', '2499.00', '2699.00', '2227.00'),
-(2, 'рубашка Tam', 'хорошая рубашка', '1200.00', '1400.00', '1000.00'),
-(3, 'рубашка Nut', 'хорошая рубашка', '1100.00', '1300.00', '1000.00'),
-(4, 'рубашка Nat', 'хорошая рубашка', '1100.00', '1300.00', '1000.00'),
-(5, 'рубашка Net', 'хорошая рубашка', '1100.00', '1300.00', '1000.00'),
-(6, 'рубашка Nat', 'хорошая рубашка синего цвета', '1100.00', '1300.00', '1000.00'),
-(7, 'рубашка Nat', 'хорошая рубашка голубого цвета', '1100.00', '1300.00', '1000.00'),
-(8, 'рубашка Nat', 'хорошая рубашка розового цвета', '1100.00', '1300.00', '1000.00'),
-(9, 'рубашка Nat', 'хорошая рубашка черного цвета', '1100.00', '1300.00', '1000.00'),
-(10, 'рубашка Nat', 'хорошая рубашка белого цвета', '1100.00', '1300.00', '1000.00'),
-(11, 'рубашка Nat', 'хорошая рубашка серого цвета', '1100.00', '1300.00', '1000.00'),
-(12, 'рубашка Nat', 'хорошая рубашка желтого цвета', '1100.00', '1300.00', '1000.00'),
-(13, 'рубашка Nat', 'хорошая рубашка красного цвета', '1100.00', '1300.00', '1000.00'),
-(14, 'рубашка Nat', 'хорошая рубашка зеленого цвета', '1100.00', '1300.00', '1000.00'),
-(15, 'рубашка Nat', 'хорошая рубашка фиолетового цвета', '1100.00', '1300.00', '1000.00'),
-(16, 'рубашка Nat', 'хорошая рубашка в полосочку', '1100.00', '1300.00', '1000.00'),
-(17, 'рубашка Non', 'хорошая рубашка красного цвета', NULL, NULL, NULL),
-(18, 'рубашка Nat', 'хорошая рубашка в красную полосочку ', '1100.00', '1300.00', '1000.00'),
-(19, 'штаны Tam', 'хорошие штаны', '1250.99', '1500.00', '1099.99');
+INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `price_promocode`, `is_avaible`) VALUES
+(1, 'рубашка Nat', 'серая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(2, 'рубашка Nat', 'черная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(3, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(4, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(5, 'рубашка Nat', 'желтая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(6, 'рубашка Nat', 'синяя рубашка', '1200.00', '1699.99', '1000.00', 1),
+(7, 'рубашка Nat', 'голубая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(8, 'рубашка Nat', 'розовая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(9, 'рубашка Nat', 'разноцветная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(10, 'рубашка Nat', 'зеленая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(11, 'рубашка Nat', 'рубашка в клетку', '1200.00', '1699.99', '1000.00', 1),
+(12, 'рубашка Nat', 'рубашка в полоску', '1200.00', '1699.99', '1000.00', 1),
+(13, 'рубашка Nat', 'рубашка в вертикальную полоску', '1200.00', '1699.99', '1000.00', 0),
+(14, 'рубашка Non', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(15, 'штаны neTrous', 'черные штаны', '2200.00', '2699.99', '2000.00', 1);
 
 -- --------------------------------------------------------
 
@@ -122,50 +115,43 @@ CREATE TABLE `product_category` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL,
-  `image_id` int(11) NOT NULL
+  `category_main_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `product_category`
 --
 
-INSERT INTO `product_category` (`id`, `product_id`, `category_id`, `image_id`) VALUES
-(1, 4, 1, 2),
-(2, 6, 1, 2),
-(3, 7, 1, 2),
-(4, 8, 1, 2),
-(5, 9, 1, 2),
-(6, 10, 1, 4),
-(8, 11, 1, 3),
-(9, 12, 1, 4),
-(10, 13, 1, 4),
-(11, 14, 1, 2),
-(12, 15, 1, 4),
-(13, 16, 1, 2),
-(14, 18, 1, 4),
-(16, 5, 2, 7),
-(17, 3, 3, 7),
-(18, 2, 5, 7),
-(19, 1, 6, 7),
-(20, 1, 7, 2),
-(21, 2, 7, 2),
-(22, 3, 7, 2),
-(23, 4, 7, 2),
-(24, 5, 7, 2),
-(25, 6, 7, 2),
-(26, 7, 7, 2),
-(27, 8, 7, 2),
-(28, 9, 7, 2),
-(29, 10, 7, 2),
-(30, 11, 7, 2),
-(31, 12, 7, 2),
-(32, 13, 7, 2),
-(33, 14, 7, 2),
-(34, 15, 7, 2),
-(35, 16, 7, 2),
-(36, 17, 7, 2),
-(37, 18, 7, 2),
-(38, 19, 8, 1);
+INSERT INTO `product_category` (`id`, `product_id`, `category_id`, `category_main_id`) VALUES
+(1, 1, 1, 1),
+(3, 1, 3, 1),
+(4, 2, 1, 1),
+(5, 2, 3, 1),
+(6, 3, 1, 1),
+(7, 3, 3, 1),
+(8, 4, 1, 1),
+(9, 4, 3, 1),
+(10, 5, 1, 1),
+(11, 5, 3, 1),
+(12, 6, 1, 1),
+(13, 6, 3, 1),
+(14, 7, 1, 1),
+(15, 7, 3, 1),
+(16, 8, 1, 1),
+(17, 8, 3, 1),
+(18, 9, 1, 1),
+(19, 9, 3, 1),
+(20, 10, 1, 1),
+(21, 10, 3, 1),
+(22, 11, 1, 1),
+(23, 11, 3, 1),
+(24, 12, 1, 1),
+(25, 12, 3, 1),
+(26, 13, 1, 1),
+(27, 13, 3, 1),
+(28, 14, 1, 1),
+(29, 14, 4, 1),
+(30, 15, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -176,37 +162,54 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`, `image_id`) V
 CREATE TABLE `product_image` (
   `id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `image_id` int(11) NOT NULL
+  `image_id` int(11) NOT NULL,
+  `main_image_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `product_image`
 --
 
-INSERT INTO `product_image` (`id`, `product_id`, `image_id`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
-(4, 2, 3),
-(5, 2, 4),
-(6, 3, 5),
-(7, 4, 1),
-(8, 5, 2),
-(9, 6, 3),
-(10, 7, 3),
-(11, 8, 4),
-(12, 9, 5),
-(13, 10, 1),
-(14, 11, 2),
-(15, 12, 3),
-(16, 13, 3),
-(17, 13, 4),
-(18, 14, 5),
-(19, 15, 1),
-(20, 16, 2),
-(21, 17, 3),
-(22, 18, 3),
-(23, 19, 6);
+INSERT INTO `product_image` (`id`, `product_id`, `image_id`, `main_image_id`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 1),
+(3, 1, 3, 1),
+(4, 2, 4, 4),
+(5, 2, 5, 4),
+(6, 3, 5, 1),
+(7, 3, 4, 1),
+(8, 3, 1, 1),
+(9, 4, 2, 2),
+(10, 4, 2, 2),
+(11, 4, 3, 2),
+(12, 5, 3, 3),
+(13, 5, 6, 3),
+(14, 5, 2, 3),
+(15, 6, 1, 1),
+(16, 6, 2, 1),
+(17, 7, 1, 1),
+(18, 7, 5, 1),
+(19, 7, 3, 1),
+(20, 8, 1, 3),
+(21, 8, 2, 3),
+(22, 8, 3, 3),
+(23, 9, 6, 6),
+(24, 9, 2, 6),
+(25, 9, 3, 6),
+(26, 10, 1, 1),
+(27, 11, 1, 1),
+(28, 11, 2, 1),
+(29, 11, 3, 1),
+(30, 12, 5, 5),
+(31, 12, 4, 5),
+(32, 12, 3, 5),
+(33, 13, 3, 4),
+(34, 13, 4, 4),
+(35, 13, 6, 4),
+(36, 14, 1, 1),
+(37, 14, 2, 1),
+(38, 14, 3, 1),
+(39, 15, 7, 7);
 
 --
 -- Индексы сохранённых таблиц
@@ -236,8 +239,7 @@ ALTER TABLE `product`
 ALTER TABLE `product_category`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `image_id` (`image_id`);
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Индексы таблицы `product_image`
@@ -255,7 +257,7 @@ ALTER TABLE `product_image`
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `image`
@@ -267,19 +269,19 @@ ALTER TABLE `image`
 -- AUTO_INCREMENT для таблицы `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT для таблицы `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `product_image`
 --
 ALTER TABLE `product_image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -290,8 +292,7 @@ ALTER TABLE `product_image`
 --
 ALTER TABLE `product_category`
   ADD CONSTRAINT `product_category_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `product_category_ibfk_3` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `product_image`
