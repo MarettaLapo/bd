@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 21 2022 г., 10:17
+-- Время создания: Окт 21 2022 г., 12:45
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -81,31 +81,29 @@ CREATE TABLE `product` (
   `price_now` decimal(10,2) DEFAULT NULL,
   `price_full` decimal(10,2) DEFAULT NULL,
   `price_promocode` decimal(10,2) DEFAULT NULL,
-  `is_avaible` tinyint(1) NOT NULL,
-  `image_main_id` int(11) NOT NULL,
-  `category_main_id` int(11) NOT NULL
+  `is_avaible` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `product`
 --
 
-INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `price_promocode`, `is_avaible`, `image_main_id`, `category_main_id`) VALUES
-(1, 'рубашка Nat', 'серая рубашка', '1200.00', '1699.99', '1000.00', 1, 1, 1),
-(2, 'рубашка Nat', 'черная рубашка', '1200.00', '1699.99', '1000.00', 1, 4, 1),
-(3, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1, 3, 1),
-(4, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1, 5, 1),
-(5, 'рубашка Nat', 'желтая рубашка', '1200.00', '1699.99', '1000.00', 1, 4, 1),
-(6, 'рубашка Nat', 'синяя рубашка', '1200.00', '1699.99', '1000.00', 1, 2, 1),
-(7, 'рубашка Nat', 'голубая рубашка', '1200.00', '1699.99', '1000.00', 1, 6, 1),
-(8, 'рубашка Nat', 'розовая рубашка', '1200.00', '1699.99', '1000.00', 1, 2, 1),
-(9, 'рубашка Nat', 'разноцветная рубашка', '1200.00', '1699.99', '1000.00', 1, 4, 1),
-(10, 'рубашка Nat', 'зеленая рубашка', '1200.00', '1699.99', '1000.00', 1, 2, 1),
-(11, 'рубашка Nat', 'рубашка в клетку', '1200.00', '1699.99', '1000.00', 1, 2, 1),
-(12, 'рубашка Nat', 'рубашка в полоску', '1200.00', '1699.99', '1000.00', 1, 3, 1),
-(13, 'рубашка Nat', 'рубашка в вертикальную полоску', '1200.00', '1699.99', '1000.00', 0, 4, 1),
-(14, 'рубашка Non', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1, 2, 1),
-(15, 'штаны neTrous', 'черные штаны', '2200.00', '2699.99', '2000.00', 1, 7, 2);
+INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `price_promocode`, `is_avaible`) VALUES
+(1, 'рубашка Nat', 'серая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(2, 'рубашка Nat', 'черная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(3, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(4, 'рубашка Nat', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(5, 'рубашка Nat', 'желтая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(6, 'рубашка Nat', 'синяя рубашка', '1200.00', '1699.99', '1000.00', 1),
+(7, 'рубашка Nat', 'голубая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(8, 'рубашка Nat', 'розовая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(9, 'рубашка Nat', 'разноцветная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(10, 'рубашка Nat', 'зеленая рубашка', '1200.00', '1699.99', '1000.00', 1),
+(11, 'рубашка Nat', 'рубашка в клетку', '1200.00', '1699.99', '1000.00', 1),
+(12, 'рубашка Nat', 'рубашка в полоску', '1200.00', '1699.99', '1000.00', 1),
+(13, 'рубашка Nat', 'рубашка в вертикальную полоску', '1200.00', '1699.99', '1000.00', 0),
+(14, 'рубашка Non', 'красная рубашка', '1200.00', '1699.99', '1000.00', 1),
+(15, 'штаны neTrous', 'черные штаны', '2200.00', '2699.99', '2000.00', 1);
 
 -- --------------------------------------------------------
 
@@ -153,6 +151,39 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (28, 14, 1),
 (29, 14, 4),
 (30, 15, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `product_category_main`
+--
+
+CREATE TABLE `product_category_main` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `product_category_main`
+--
+
+INSERT INTO `product_category_main` (`id`, `product_id`, `category_id`) VALUES
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 1),
+(4, 4, 1),
+(5, 5, 1),
+(6, 6, 1),
+(7, 7, 1),
+(8, 8, 1),
+(9, 9, 1),
+(10, 10, 1),
+(11, 11, 1),
+(12, 12, 1),
+(13, 13, 1),
+(14, 14, 1),
+(15, 15, 2);
 
 -- --------------------------------------------------------
 
@@ -210,6 +241,39 @@ INSERT INTO `product_image` (`id`, `product_id`, `image_id`) VALUES
 (38, 14, 3),
 (39, 15, 7);
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `product_image_main`
+--
+
+CREATE TABLE `product_image_main` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `image_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Дамп данных таблицы `product_image_main`
+--
+
+INSERT INTO `product_image_main` (`id`, `product_id`, `image_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 4),
+(5, 5, 5),
+(6, 6, 6),
+(7, 7, 1),
+(8, 8, 2),
+(9, 9, 3),
+(10, 10, 4),
+(11, 11, 5),
+(12, 12, 6),
+(13, 13, 1),
+(14, 14, 2),
+(15, 15, 7);
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -241,9 +305,25 @@ ALTER TABLE `product_category`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Индексы таблицы `product_category_main`
+--
+ALTER TABLE `product_category_main`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
 -- Индексы таблицы `product_image`
 --
 ALTER TABLE `product_image`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `image_id` (`image_id`);
+
+--
+-- Индексы таблицы `product_image_main`
+--
+ALTER TABLE `product_image_main`
   ADD PRIMARY KEY (`id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `image_id` (`image_id`);
@@ -277,10 +357,22 @@ ALTER TABLE `product_category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
+-- AUTO_INCREMENT для таблицы `product_category_main`
+--
+ALTER TABLE `product_category_main`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT для таблицы `product_image`
 --
 ALTER TABLE `product_image`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT для таблицы `product_image_main`
+--
+ALTER TABLE `product_image_main`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -294,11 +386,25 @@ ALTER TABLE `product_category`
   ADD CONSTRAINT `product_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE;
 
 --
+-- Ограничения внешнего ключа таблицы `product_category_main`
+--
+ALTER TABLE `product_category_main`
+  ADD CONSTRAINT `product_category_main_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_category_main_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE;
+
+--
 -- Ограничения внешнего ключа таблицы `product_image`
 --
 ALTER TABLE `product_image`
   ADD CONSTRAINT `product_image_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `product_image_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `product_image_main`
+--
+ALTER TABLE `product_image_main`
+  ADD CONSTRAINT `product_image_main_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `product_image_main_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
