@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 21 2022 г., 15:36
+-- Время создания: Окт 22 2022 г., 08:01
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `db_site`
 --
+CREATE DATABASE IF NOT EXISTS `db_site` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_site`;
 
 -- --------------------------------------------------------
 
@@ -52,21 +54,22 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 
 CREATE TABLE `image` (
   `id` int(11) NOT NULL,
-  `alt` varchar(200) NOT NULL
+  `alt` varchar(200) NOT NULL,
+  `path` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Дамп данных таблицы `image`
 --
 
-INSERT INTO `image` (`id`, `alt`) VALUES
-(1, './image-1.jpg'),
-(2, './image-2.jpg'),
-(3, './image-3.jpg'),
-(4, './image-4.jpg'),
-(5, './image-5.jpg'),
-(6, './image-6.jpg'),
-(7, './image-7.jpg');
+INSERT INTO `image` (`id`, `alt`, `path`) VALUES
+(1, 'картинка 1', './image-1.jpg'),
+(2, 'картинка 2', './image-2.jpg'),
+(3, 'картинка 3', './image-3.jpg'),
+(4, 'картинка 4', './image-4.jpg'),
+(5, 'картинка 5', './image-5.jpg'),
+(6, 'картинка 6', './image-6.jpg'),
+(7, 'картинка 7', './image-7.jpg');
 
 -- --------------------------------------------------------
 
