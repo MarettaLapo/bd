@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 22 2022 г., 08:01
+-- Время создания: Окт 30 2022 г., 14:55
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -44,7 +44,8 @@ INSERT INTO `category` (`id`, `name`, `description`) VALUES
 (2, 'штаны', 'категория со штанами'),
 (3, 'рубашки Nat', 'категория с рубашками Nat'),
 (4, 'рубашки Non', 'категория с рубашками Non'),
-(5, 'штаны Trous', 'категория со штанами Trous');
+(5, 'штаны Trous', 'категория со штанами Trous'),
+(6, 'штаны neTrous', 'категория со штанами neTrous');
 
 -- --------------------------------------------------------
 
@@ -116,7 +117,7 @@ INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `
 
 CREATE TABLE `product_category` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -125,7 +126,7 @@ CREATE TABLE `product_category` (
 --
 
 INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
-(3, 1, 3),
+(3, 1, 1),
 (5, 2, 3),
 (7, 3, 3),
 (9, 4, 3),
@@ -138,7 +139,9 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (23, 11, 3),
 (25, 12, 3),
 (27, 13, 3),
-(29, 14, 4);
+(29, 14, 4),
+(31, 14, 6),
+(33, NULL, 5);
 
 -- --------------------------------------------------------
 
@@ -157,7 +160,7 @@ CREATE TABLE `product_category_main` (
 --
 
 INSERT INTO `product_category_main` (`id`, `product_id`, `category_id`) VALUES
-(1, 1, 1),
+(1, 1, 3),
 (2, 2, 1),
 (3, 3, 1),
 (4, 4, 1),
@@ -319,7 +322,7 @@ ALTER TABLE `product_image_main`
 -- AUTO_INCREMENT для таблицы `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `image`
@@ -337,7 +340,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `product_category`
 --
 ALTER TABLE `product_category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT для таблицы `product_category_main`
