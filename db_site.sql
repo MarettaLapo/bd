@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 30 2022 г., 14:55
+-- Время создания: Окт 31 2022 г., 12:52
 -- Версия сервера: 10.4.25-MariaDB
 -- Версия PHP: 8.1.10
 
@@ -117,7 +117,7 @@ INSERT INTO `product` (`id`, `name`, `description`, `price_now`, `price_full`, `
 
 CREATE TABLE `product_category` (
   `id` int(11) NOT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `product_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -140,8 +140,7 @@ INSERT INTO `product_category` (`id`, `product_id`, `category_id`) VALUES
 (25, 12, 3),
 (27, 13, 3),
 (29, 14, 4),
-(31, 14, 6),
-(33, NULL, 5);
+(31, 14, 6);
 
 -- --------------------------------------------------------
 
